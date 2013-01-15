@@ -5,6 +5,8 @@
 
 @title{Scribfile: File and Operating System related Scribble Functionality}
 
+@author+email["Grant Rettke" "grettke@acm.org"]
+
 @section{File Loading}
 
 @subsection{lispblock0}
