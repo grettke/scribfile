@@ -1,4 +1,4 @@
-; non-trivial helper
+; account for anything
 (watch all)
 (reset)
 (defrule do-anything
