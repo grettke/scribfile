@@ -34,7 +34,9 @@ results in:
 @defform[(systemout command)]{
                                        
 Responsible for creating a @racket[verbatim] form by capturing the STDOUT and
-STDERR of the process created by calling @racket[system] on @racket[command], a string.}
+STDERR of the process created by calling @racket[system] on @racket[command], a string.
+
+It works on Linux, but not Windows (use @racket[systemout*] instead).}
 
 If you want to capture the results of arbitrary commands, then this is a simple way
 to do it. For example on Linux:
@@ -52,7 +54,9 @@ This is a message going to STDERR.}
                                        
 Responsible for creating a @racket[verbatim] form by capturing the STDOUT and
 STDERR of the process created by calling @racket[system*] on @racket[command], a string,
-and @racket[args], 0-or-more strings.}
+and @racket[args], 0-or-more strings.
+
+It works on Linux and Windows.}
 
 @codeblock0|{@systemout*["/bin/ls" "-a" "-l"]}|
 
