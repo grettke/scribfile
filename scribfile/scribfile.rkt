@@ -1,7 +1,8 @@
 #lang racket
 
 (provide lispblock0
-         systemout)
+         systemout
+         systemout*)
 
 (require (for-syntax racket/port
                      racket/system)
@@ -33,4 +34,23 @@
      (with-syntax ([(out err) 
                     (map (lambda (dtm) (datum->syntax #'_ dtm)) 
                          (system-call (syntax->datum #'command)))])
-         #'(verbatim out err))]))
+       #'(verbatim out err))]))
+
+(define-for-syntax (system*-call command stx-args)
+  (let ((cop (open-output-string))
+        (cep (open-output-string))
+        (args (map (lambda (stx) (syntax->datum stx)) stx-args)))
+    (parameterize ((current-output-port cop)
+                   (current-error-port cep))  
+      (apply system* command args))
+    (let ((result (map get-output-string (list cop cep))))
+      (display result)
+      result)))
+
+(define-syntax (systemout* stx)
+  (syntax-case stx ()
+    [(_ command arg ...)
+     (with-syntax ([(out err) 
+                    (map (lambda (dtm) (datum->syntax #'_ dtm)) 
+                         (system*-call (syntax->datum #'command) (syntax->list #'(arg ...))))])
+       #'(verbatim out err))]))
