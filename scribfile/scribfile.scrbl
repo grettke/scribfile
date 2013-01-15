@@ -39,6 +39,15 @@ STDERR of the process created by calling @racket[system] on @racket[command], a 
 If you want to capture the results of arbitrary commands, then this is a simple way
 to do it. For example on Linux:
 
+@codeblock0|{@systemout["~/git/scribfile/scribfile/test.sh"]}|
+
+results in:
+
+@verbatim{This is a message going to STDOUT.
+This is a message going to STDERR.}
+
+and
+
 @codeblock0|{@systemout["uname -a"]}|
 
 results in:
