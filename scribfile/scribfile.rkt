@@ -1,6 +1,6 @@
 #lang racket
 
-(provide lispblock
+(provide lispblock0
          systemout)
 
 (require (for-syntax racket/port
@@ -13,11 +13,11 @@
   (close-input-port fis)
   result)
 
-(define-syntax (lispblock stx) 
+(define-syntax (lispblock0 stx) 
   (syntax-case stx ()
     [(_ option ... path)
      (with-syntax ([contents (datum->syntax #'_ (sf:path->string (syntax->datum #'path)))])
-       #'(codeblock option ... contents))]))
+       #'(codeblock0 option ... contents))]))
 
 (define-for-syntax (system-call command)
   (let ((cop (open-output-string))
@@ -32,4 +32,4 @@
     [(_ command)
      (with-syntax ([(out err) 
                     (map (lambda (dtm) (datum->syntax #'_ dtm)) (system-call (syntax->datum #'command)))])
-         #'(verbatim out))]))
+         #'(verbatim out err))]))
