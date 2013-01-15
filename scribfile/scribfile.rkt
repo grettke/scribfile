@@ -1,6 +1,6 @@
 #lang racket
 
-(provide fileblock
+(provide lispblock
          systemout)
 
 (require (for-syntax racket/port
@@ -13,7 +13,7 @@
   (close-input-port fis)
   result)
 
-(define-syntax (fileblock stx) 
+(define-syntax (lispblock stx) 
   (syntax-case stx ()
     [(_ option ... path)
      (with-syntax ([contents (datum->syntax #'_ (sf:path->string (syntax->datum #'path)))])
