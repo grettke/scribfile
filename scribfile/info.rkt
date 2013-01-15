@@ -50,7 +50,3 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 (define repositories '("4.x"))
 
 (define scribblings '(("scribfile.scrbl" ())))
-
-(define drracket-tools (list "scribfile.rkt"))
-(define drracket-tool-names (list "Scribfile"))
-(define drracket-tool-urls  (list "https://github.com/grettke/scribfile"))
