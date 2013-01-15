@@ -3,7 +3,7 @@
 @(require "scribfile.rkt"
           (for-label racket))
 
-@title{Scribfile: File and System Helpers for Scribble}
+@title{Scribfile: File and Operating System related Scribble Functionality}
 
 @section{File Loading}
 
