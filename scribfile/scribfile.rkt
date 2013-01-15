@@ -25,7 +25,9 @@
         (cep (open-output-string)))
     (parameterize ((current-output-port cop)
                    (current-error-port cep))
-      (system command))
+      (call-with-exception-handler 
+       (lambda (exn) (printf "Error: ~a~n" (if (exn? exn) (exn-message exn) exn)))
+       (lambda () (system command))))
     (map get-output-string (list cop cep))))
 
 (define-syntax (systemout stx)
