@@ -4,4 +4,6 @@
 
 @title{Scribfile: Tools to help work with non-Racket files within Scribble}
  
-@fileblock[#:line-numbers 1]{sample.clp}
+@fileblock{sample.clp}
+
+@systemout["jess ~/git/scribfile/scribfile/sample.clp"]
