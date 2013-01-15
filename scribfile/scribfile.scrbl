@@ -56,6 +56,8 @@ and @racket[args], 0-or-more strings.}
 
 @codeblock0|{@systemout*["/bin/ls" "-a" "-l"]}|
 
+@systemout*["ls" "-a" "-l"]
+
 results in:
 
 @verbatim{total 88

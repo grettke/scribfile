@@ -44,7 +44,9 @@
         (args (map (lambda (stx) (syntax->datum stx)) stx-args)))
     (parameterize ((current-output-port cop)
                    (current-error-port cep))  
-      (apply system* command args))
+      (call-with-exception-handler
+       (lambda (exn) (printf "Error: ~a~n" (if (exn? exn) (exn-message exn) exn)))
+       (lambda () (apply system* command args))))
     (let ((result (map get-output-string (list cop cep))))
       (display result)
       result)))
