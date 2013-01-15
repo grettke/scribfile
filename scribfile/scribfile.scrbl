@@ -1,9 +1,9 @@
 #lang scribble/manual
 
-@(require (planet grettke/scribfile/scribfile)
+@(require "scribfile.rkt"
           (for-label racket))
 
-@title{Scribfile: Tools to help work with non-Racket files within Scribble}
+@title{Scribfile: File and System Helpers for Scribble}
 
 @section{File Loading}
 
