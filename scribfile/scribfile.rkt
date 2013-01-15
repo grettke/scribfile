@@ -31,5 +31,6 @@
   (syntax-case stx ()
     [(_ command)
      (with-syntax ([(out err) 
-                    (map (lambda (dtm) (datum->syntax #'_ dtm)) (system-call (syntax->datum #'command)))])
+                    (map (lambda (dtm) (datum->syntax #'_ dtm)) 
+                         (system-call (syntax->datum #'command)))])
          #'(verbatim out err))]))
