@@ -1,4 +1,4 @@
 scribfile
 =========
 
-Tools to help work with non-Racket files within Scribble
+File and Operating System related Scribble Functionality.

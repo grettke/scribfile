@@ -1,4 +1,3 @@
-#|
 Copyright (c) 2013 Grant Rettke (grettke@acm.org)
 
 All rights reserved.
@@ -25,32 +24,3 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-|#
-#lang setup/infotab
-
-(define name "Scribfile")
-
-(define version "1.0.0")
-
-(define release-notes '((p "First release.")))
-
-(define blurb
-  '("File and Operating System related Scribble Functionality"))
-
-(define categories '(devtools))
-
-(define can-be-loaded-with 'none)
-
-(define homepage "http://www.wisdomandwonder.com/")
-
-(define primary-file "scribfile.rkt")
-
-(define required-core-version "5.0")
-
-(define repositories '("4.x"))
-
-(define scribblings '(("scribfile.scrbl" ())))
-
-(define drracket-tools (list "scribfile.rkt"))
-(define drracket-tool-names (list "Scribfile"))
-(define drracket-tool-urls  (list "https://github.com/grettke/scribfile"))
