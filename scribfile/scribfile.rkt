@@ -9,10 +9,17 @@
          scribble/manual)
 
 (define-for-syntax (sf:path->string path)
-  (define fis (open-input-file #:mode 'text path))
-  (define result (port->string fis))
-  (close-input-port fis)
-  result)
+  (let ((fis #f)
+        (result #f))
+    (call-with-exception-handler
+     (lambda (exn)
+       (close-input-port fis)
+       (set! result (format "Error: ~a~n" (if (exn? exn) (exn-message exn) exn))))
+     (lambda ()
+       (set! fis (open-input-file #:mode 'text path))
+       (set! result (port->string fis))))
+    (close-input-port fis)
+    result))
 
 (define-syntax (lispblock0 stx) 
   (syntax-case stx ()
