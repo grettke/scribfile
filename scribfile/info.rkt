@@ -30,9 +30,9 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 (define name "Scribfile")
 
-(define version "1.0.0")
+(define version "1.1.0")
 
-(define release-notes '((p "First release.")))
+(define release-notes '((p "Added systemout*. Fixed info.rkt.")))
 
 (define blurb
   '("File and Operating System related Scribble Functionality"))
