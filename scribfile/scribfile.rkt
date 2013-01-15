@@ -8,13 +8,16 @@
                      racket/system)
          scribble/manual)
 
+(define-for-syntax (exn->str exn)
+  (if (exn? exn) (exn-message exn) exn))
+
 (define-for-syntax (sf:path->string path)
   (let ((fis #f)
         (result #f))
     (call-with-exception-handler
      (lambda (exn)
        (close-input-port fis)
-       (set! result (format "Error: ~a~n" (if (exn? exn) (exn-message exn) exn))))
+       (set! result (format "Error: ~a~n" (exn->str exn))))
      (lambda ()
        (set! fis (open-input-file #:mode 'text path))
        (set! result (port->string fis))))
@@ -33,7 +36,7 @@
     (parameterize ((current-output-port cop)
                    (current-error-port cep))
       (call-with-exception-handler 
-       (lambda (exn) (printf "Error: ~a~n" (if (exn? exn) (exn-message exn) exn)))
+       (lambda (exn) (printf "Error: ~a~n" (exn->str exn)))
        (lambda () (system command))))
     (map get-output-string (list cop cep))))
 
@@ -52,7 +55,7 @@
     (parameterize ((current-output-port cop)
                    (current-error-port cep))  
       (call-with-exception-handler
-       (lambda (exn) (printf "Error: ~a~n" (if (exn? exn) (exn-message exn) exn)))
+       (lambda (exn) (printf "Error: ~a~n" (exn->str exn)))
        (lambda () (apply system* command args))))
     (let ((result (map get-output-string (list cop cep))))
       (display result)
